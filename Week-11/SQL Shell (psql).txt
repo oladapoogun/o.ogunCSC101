@@ -1,0 +1,266 @@
+Server [localhost]:
+Database [postgres]:
+Port [5432]:
+Username [postgres]:
+Password for user postgres:
+
+psql (17.2)
+WARNING: Console code page (437) differs from Windows code page (1252)
+         8-bit characters might not work correctly. See psql reference
+         page "Notes for Windows users" for details.
+Type "help" for help.
+
+postgres=# -- Create the database
+postgres=# CREATE DATABASE mtnnigeria_db;
+CREATE DATABASE
+postgres=#
+postgres=# -- Use the database
+postgres=# USE mtnnigeria_db;
+ERROR:  syntax error at or near "USE"
+LINE 1: USE mtnnigeria_db;
+        ^
+postgres=#
+postgres=# -- Create the Employees table
+postgres=# CREATE TABLE Employees (
+postgres(#     Eid INT PRIMARY KEY,
+postgres(#     Ename VARCHAR(50),
+postgres(#     DNo INT,
+postgres(#     Esal DECIMAL(10, 2),
+postgres(#     Age INT,
+postgres(#     Phone VARCHAR(15)
+postgres(# );
+CREATE TABLE
+postgres=#
+postgres=# -- Create the Department table
+postgres=# CREATE TABLE Department (
+postgres(#     Dept_Managerid INT,
+postgres(#     DNo INT PRIMARY KEY,
+postgres(#     Dname VARCHAR(50),
+postgres(#     Dlocation VARCHAR(50),
+postgres(#     Pno INT
+postgres(# );
+CREATE TABLE
+postgres=#
+postgres=# -- Create the Project table
+postgres=# CREATE TABLE Project (
+postgres(#     PNo INT PRIMARY KEY,
+postgres(#     Pname VARCHAR(50),
+postgres(#     Pduration VARCHAR(20),
+postgres(#     Project_Managerid INT
+postgres(# );
+CREATE TABLE
+postgres=# CREATE DATABASE mtnnigeria_db;
+ERROR:  database "mtnnigeria_db" already exists
+postgres=#
+postgres=# USE mtnnigeria_db;
+ERROR:  syntax error at or near "USE"
+LINE 1: USE mtnnigeria_db;
+        ^
+postgres=#
+postgres=# CREATE TABLE Employees (
+postgres(#     Eid INT PRIMARY KEY,
+postgres(#     Ename VARCHAR(50),
+postgres(#     DNo INT,
+postgres(#     Esal DECIMAL(10, 2),
+postgres(#     Age INT,
+postgres(#     Phone VARCHAR(15)
+postgres(# );
+ERROR:  relation "employees" already exists
+postgres=#
+postgres=# CREATE TABLE Department (
+postgres(#     Dept_Managerid INT,
+postgres(#     DNo INT PRIMARY KEY,
+postgres(#     Dname VARCHAR(50),
+postgres(#     Dlocation VARCHAR(50),
+postgres(#     Pno INT
+postgres(# );
+ERROR:  relation "department" already exists
+postgres=#
+postgres=# CREATE TABLE Project (
+postgres(#     PNo INT PRIMARY KEY,
+postgres(#     Pname VARCHAR(50),
+postgres(#     Pduration VARCHAR(20),
+postgres(#     Project_Managerid INT
+postgres(# );
+ERROR:  relation "project" already exists
+postgres=# INSERT INTO Employees (Eid, Ename, DNo, Esal, Age, Phone) VALUES
+postgres-# (101, 'Alade Joy', 2, 250000, 33, '08023089832'),
+postgres-# (100, 'Mustapha Ali', 3, 175000, 32, '08063285831'),
+postgres-# (107, 'Alokwe Martin', 7, 380000, 48, '07090082812'),
+postgres-# (97, 'Dankade Aminat', 5, 550000, 40, '09023688832'),
+postgres-# (108, 'Josiah Joshua', 1, 120000, 30, '08053189131'),
+postgres-# (102, 'Mankinde Mary', 2, 450000, 55, '09023487830'),
+postgres-# (120, 'Adeleke Jane', 4, 200000, 38, '07061045862'),
+postgres-# (122, 'Osahon Mark', 6, 320000, 44, '08022289842'),
+postgres-# (117, 'Suleman Ajayi', 3, 800000, 50, '07030089811'),
+postgres-# (104, 'Kuti Lawal', 1, 750000, 35, '09145689842');
+INSERT 0 10
+postgres=# INSERT INTO Department (Dept_Managerid, DNo, Dname, Dlocation, Pno) VALUES
+postgres-# (108, 1, 'Administration', 'Ikeja', 44),
+postgres-# (101, 2, 'Account', 'Egbeda', 11),
+postgres-# (100, 3, 'Packaging', 'Ajah', 44),
+postgres-# (120, 4, 'Research', 'V.I', 33),
+postgres-# (97, 5, 'Account', 'Magodo', 22),
+postgres-# (122, 6, 'Operations', 'Mile 2', 44),
+postgres-# (107, 7, 'Packaging', 'Ketu', 55);
+INSERT 0 7
+postgres=# INSERT INTO Project (PNo, Pname, Pduration, Project_Managerid) VALUES
+postgres-# (11, 'A', '9 Months', 102),
+postgres-# (22, 'B', '14 Months', 97),
+postgres-# (33, 'C', '16 Months', 120),
+postgres-# (44, 'D', '25 Months', 108),
+postgres-# (55, 'E', '9 Months', 107);
+INSERT 0 5
+postgres=# SHOW TABLES;
+ERROR:  unrecognized configuration parameter "tables"
+postgres=# \d
+           List of relations
+ Schema |    Name    | Type  |  Owner
+--------+------------+-------+----------
+ public | department | table | postgres
+ public | employees  | table | postgres
+ public | project    | table | postgres
+(3 rows)
+
+
+postgres=# \c
+You are now connected to database "postgres" as user "postgres".
+postgres=# CREATE DATABASE mtnnigeria_db;
+ERROR:  database "mtnnigeria_db" already exists
+postgres=#
+postgres=# USE mtnnigeria_db;
+ERROR:  syntax error at or near "USE"
+LINE 1: USE mtnnigeria_db;
+        ^
+postgres=#
+postgres=# CREATE TABLE Employees (
+postgres(#     Eid INT PRIMARY KEY,
+postgres(#     Ename VARCHAR(50),
+postgres(#     DNo INT,
+postgres(#     Esal DECIMAL(10, 2),
+postgres(#     Age INT,
+postgres(#     Phone VARCHAR(15)
+postgres(# );
+ERROR:  relation "employees" already exists
+postgres=#
+postgres=# CREATE TABLE Department (
+postgres(#     Dept_Managerid INT,
+postgres(#     DNo INT PRIMARY KEY,
+postgres(#     Dname VARCHAR(50),
+postgres(#     Dlocation VARCHAR(50),
+postgres(#     Pno INT
+postgres(# );
+ERROR:  relation "department" already exists
+postgres=#
+postgres=# CREATE TABLE Project (
+postgres(#     PNo INT PRIMARY KEY,
+postgres(#     Pname VARCHAR(50),
+postgres(#     Pduration VARCHAR(20),
+postgres(#     Project_Managerid INT
+postgres(# );
+ERROR:  relation "project" already exists
+postgres=# \l
+                                                                      List of databases
+     Name      |  Owner   | Encoding | Locale Provider |          Collate           |           Ctype            | Locale | ICU Rules |   Access privileges
+---------------+----------+----------+-----------------+----------------------------+----------------------------+--------+-----------+-----------------------
+ cos101_db     | postgres | UTF8     | libc            | English_United States.1252 | English_United States.1252 |  |           |
+ mtnnigeria_db | postgres | UTF8     | libc            | English_United States.1252 | English_United States.1252 |  |           |
+ postgres      | postgres | UTF8     | libc            | English_United States.1252 | English_United States.1252 |  |           |
+ template0     | postgres | UTF8     | libc            | English_United States.1252 | English_United States.1252 |  |           | =c/postgres          +
+               |          |          |                 |                            |                            |  |           | postgres=CTc/postgres
+ template1     | postgres | UTF8     | libc            | English_United States.1252 | English_United States.1252 |  |           | =c/postgres          +
+               |          |          |                 |                            |                            |  |           | postgres=CTc/postgres
+(5 rows)
+
+
+postgres=# \c mtnnigeria_db
+You are now connected to database "mtnnigeria_db" as user "postgres".
+mtnnigeria_db=# \d
+Did not find any relations.
+mtnnigeria_db=# CREATE DATABASE mtnnigeria_db;
+ERROR:  database "mtnnigeria_db" already exists
+mtnnigeria_db=#
+mtnnigeria_db=# USE mtnnigeria_db;
+ERROR:  syntax error at or near "USE"
+LINE 1: USE mtnnigeria_db;
+        ^
+mtnnigeria_db=#
+mtnnigeria_db=# CREATE TABLE Employees (
+mtnnigeria_db(#     Eid INT PRIMARY KEY,
+mtnnigeria_db(#     Ename VARCHAR(50),
+mtnnigeria_db(#     DNo INT,
+mtnnigeria_db(#     Esal DECIMAL(10, 2),
+mtnnigeria_db(#     Age INT,
+mtnnigeria_db(#     Phone VARCHAR(15)
+mtnnigeria_db(# );
+CREATE TABLE
+mtnnigeria_db=#
+mtnnigeria_db=# CREATE TABLE Department (
+mtnnigeria_db(#     Dept_Managerid INT,
+mtnnigeria_db(#     DNo INT PRIMARY KEY,
+mtnnigeria_db(#     Dname VARCHAR(50),
+mtnnigeria_db(#     Dlocation VARCHAR(50),
+mtnnigeria_db(#     Pno INT
+mtnnigeria_db(# );
+CREATE TABLE
+mtnnigeria_db=#
+mtnnigeria_db=# CREATE TABLE Project (
+mtnnigeria_db(#     PNo INT PRIMARY KEY,
+mtnnigeria_db(#     Pname VARCHAR(50),
+mtnnigeria_db(#     Pduration VARCHAR(20),
+mtnnigeria_db(#     Project_Managerid INT
+mtnnigeria_db(# );
+CREATE TABLE
+mtnnigeria_db=# \d
+           List of relations
+ Schema |    Name    | Type  |  Owner
+--------+------------+-------+----------
+ public | department | table | postgres
+ public | employees  | table | postgres
+ public | project    | table | postgres
+(3 rows)
+
+
+mtnnigeria_db=# INSERT INTO Employees (Eid, Ename, DNo, Esal, Age, Phone) VALUES
+mtnnigeria_db-# (101, 'Alade Joy', 2, 250000, 33, '08023089832'),
+mtnnigeria_db-# (100, 'Mustapha Ali', 3, 175000, 32, '08063285831'),
+mtnnigeria_db-# (107, 'Alokwe Martin', 7, 380000, 48, '07090082812'),
+mtnnigeria_db-# (97, 'Dankade Aminat', 5, 550000, 40, '09023688832'),
+mtnnigeria_db-# (108, 'Josiah Joshua', 1, 120000, 30, '08053189131'),
+mtnnigeria_db-# (102, 'Mankinde Mary', 2, 450000, 55, '09023487830'),
+mtnnigeria_db-# (120, 'Adeleke Jane', 4, 200000, 38, '07061045862'),
+mtnnigeria_db-# (122, 'Osahon Mark', 6, 320000, 44, '08022289842'),
+mtnnigeria_db-# (117, 'Suleman Ajayi', 3, 800000, 50, '07030089811'),
+mtnnigeria_db-# (104, 'Kuti Lawal', 1, 750000, 35, '09145689842');
+INSERT 0 10
+mtnnigeria_db=# INSERT INTO Department (Dept_Managerid, DNo, Dname, Dlocation, Pno) VALUES
+mtnnigeria_db-# (108, 1, 'Administration', 'Ikeja', 44),
+mtnnigeria_db-# (101, 2, 'Account', 'Egbeda', 11),
+mtnnigeria_db-# (100, 3, 'Packaging', 'Ajah', 44),
+mtnnigeria_db-# (120, 4, 'Research', 'V.I', 33),
+mtnnigeria_db-# (97, 5, 'Account', 'Magodo', 22),
+mtnnigeria_db-# (122, 6, 'Operations', 'Mile 2', 44),
+mtnnigeria_db-# (107, 7, 'Packaging', 'Ketu', 55);
+INSERT 0 7
+mtnnigeria_db=# INSERT INTO Project (PNo, Pname, Pduration, Project_Managerid) VALUES
+mtnnigeria_db-# (11, 'A', '9 Months', 102),
+mtnnigeria_db-# (22, 'B', '14 Months', 97),
+mtnnigeria_db-# (33, 'C', '16 Months', 120),
+mtnnigeria_db-# (44, 'D', '25 Months', 108),
+mtnnigeria_db-# (55, 'E', '9 Months', 107);
+INSERT 0 5
+mtnnigeria_db=# \d
+           List of relations
+ Schema |    Name    | Type  |  Owner
+--------+------------+-------+----------
+ public | department | table | postgres
+ public | employees  | table | postgres
+ public | project    | table | postgres
+(3 rows)
+
+
+mtnnigeria_db=# SELECT*Employees
+mtnnigeria_db-# SELECT* FROM Employees
+mtnnigeria_db-# SELECT * FROM mtnnigeria_db
+mtnnigeria_db-# mysqldump -u username -p database_name > database_name.sql
+mtnnigeria_db-#
